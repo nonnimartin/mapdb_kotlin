@@ -17,5 +17,6 @@
     <orderEntry type="library" name="guava-core-19.0.0" level="project" />
     <orderEntry type="library" name="guava-concurrent-19.0.0" level="project" />
     <orderEntry type="library" name="guava-collect-19.0.0" level="project" />
+    <orderEntry type="library" name="commons-cli-1.4" level="project" />
   </component>
 </module>

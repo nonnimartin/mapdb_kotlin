@@ -1,20 +1,37 @@
 import org.mapdb.*;
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.DefaultParser;
+import org.apache.commons.cli.HelpFormatter;
+import org.apache.commons.cli.Option;
+import org.apache.commons.cli.Options;
+import org.apache.commons.cli.ParseException;
 
 public class Main {
 
     public static void main(String[] args) {
 
+        CommandLine commandLine;
+        Option crawlDb           = Option.builder("crawldb").argName("crawldb").hasArg().desc("Please add the path to the crawldb data file").build();
+        Options options          = new Options();
+        CommandLineParser parser = new DefaultParser();
+        options.addOption(crawlDb);
+        System.out.println("options = " + options.toString());
+
         //handle command line arguments here
         if (args.length > 0) {
-            System.out.println("The command line"+
-                    " arguments are:");
 
-            // iterating the args array and printing
-            // the command line arguments
-            for (String val:args)
-                System.out.println(val);
-        }else{
-            System.out.println("No command line "+ "arguments found.");
+//            try {
+//                //commandLine = parser.parse(options);
+//
+//                if (commandLine.hasOption("A")) {
+//                    System.out.print("Option A is present.  The value is: ");
+//                    System.out.println(commandLine.getOptionValue("A"));
+//                }
+//            }catch (ParseException exception) {
+//                System.out.print("Parse error: ");
+//                System.out.println(exception.getMessage());
+//            }
         }
 
         DB db                          = DBMaker.fileDB("data.db").checksumHeaderBypass().make();
