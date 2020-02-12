@@ -44,14 +44,13 @@ public class Main {
             System.out.println(thisKey);
         }
 
-        //System.out.println("Table names = " + db.getAllNames().toString());
+        System.out.println("Table names = " + db.getAllNames().toString());
 
         //These all appear to be empty in my own db
-        /*
-        HTreeMap justMap    = db.get("map");
-        HTreeMap errorsMap  = db.get("ERRORS_MAP");
-        HTreeMap deletedMap = db.get("DELETED_MAP");
-         */
+
+//        HTreeMap justMap    = db.get("map");
+//        HTreeMap errorsMap  = db.get("ERRORS_MAP");
+//        HTreeMap deletedMap = db.get("DELETED_MAP");
 
         //Info (mostly stats about the scan
         Long fetchedItems   = (Long)infoMap.get("fetchedItems");
