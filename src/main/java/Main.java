@@ -35,30 +35,40 @@ public class Main {
         }
         DB db                          = DBMaker.fileDB(crawldbPath).checksumHeaderBypass().make();
         Iterable<String> tableNames    = db.getAllNames();
-        HTreeMap infoMap              = db.get("infoMap");
-        HTreeMap finishedMap          = db.get("FINISHED_MAP");
-        Iterable<String> finishedUrls = finishedMap.getKeys();
+        HTreeMap infoMap               = db.get("infoMap");
+        HTreeMap finishedMap           = db.get("FINISHED_MAP");
+        Iterable<String> finishedUrls  = finishedMap.getKeys();
 
-        System.out.println("Finished files:");
+        System.out.println("Current Items Held in Crawl Db:");
         for (String thisKey : finishedUrls){
             System.out.println(thisKey);
         }
 
-        System.out.println("Table names = " + db.getAllNames().toString());
+        //System.out.println("Table names = " + db.getAllNames().toString());
 
         //These all appear to be empty in my own db
 
-//        HTreeMap justMap    = db.get("map");
-//        HTreeMap errorsMap  = db.get("ERRORS_MAP");
-//        HTreeMap deletedMap = db.get("DELETED_MAP");
+        HTreeMap justMap    = db.get("map");
+        HTreeMap errorsMap  = db.get("ERRORS_MAP");
+        HTreeMap deletedMap = db.get("DELETED_MAP");
+
+        if (deletedMap != null) System.out.println("Deleted map = " + deletedMap.keySet().toString());
 
         //Info (mostly stats about the scan
         Long fetchedItems   = (Long)infoMap.get("fetchedItems");
         Long failedItems    = (Long)infoMap.get("failedItems");
         Long newItems       = (Long)infoMap.get("newItems");
         Long emittedItems   = (Long)infoMap.get("emittedItems");
-        String startLinks   = infoMap.get("startLinks").toString();
+        String[] startLinks = (String[]) infoMap.get("startLinks");
         Long discardedItems = (Long)infoMap.get("discardedItems");
+
+        System.out.println("Fetched items = " + fetchedItems);
+        System.out.println("New items = " + newItems);
+        System.out.println("Failed items = " + failedItems);
+        System.out.println("Emitted Items = " + emittedItems);
+        System.out.println("Discarded Items = " + discardedItems);
+
+
 
 
 
